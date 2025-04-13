@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beatles Facts Generator</title>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #1a1a1a, #4a4a4a);
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        h1 {
+            color: #ffd700;
+        }
+        button {
+            background-color: #1e90ff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #ffd700;
+            color: #000000;
+        }
+        #fact, #answer {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+        a {
+            color: #1e90ff;
+        }
+        a:hover {
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Beatles Facts Generator</h1>
+        <p>Test your knowledge with Beatles trivia!</p>
+        <button onclick="generateFact()">New Fact</button>
+        <button onclick="showAnswer()">Show Answer</button>
+        <div id="fact"></div>
+        <div id="answer"></div>
+        <p><a href="beatles.html">Back to Beatles Page</a> | <a href="index.html">Back to Portfolio</a></p>
+    </div>
+
+    <script>
+        const facts = [
+            {
+                question: "Which Beatle wrote the song 'Yesterday'?",
+                answer: "Paul McCartney wrote 'Yesterday,' one of the most covered songs in history."
+            },
+            {
+                question: "What was the original name of The Beatles?",
+                answer: "The Beatles were originally called The Quarrymen."
+            },
+            {
+                question: "Which album features the song 'Let It Be'?",
+                answer: "'Let It Be' is the title track of their 1970 album."
+            },
+            {
+                question: "Who was known as the 'Quiet Beatle'?",
+                answer: "George Harrison was often referred to as the 'Quiet Beatle.'"
+            },
+            {
+                question: "What year did The Beatles break up?",
+                answer: "The Beatles officially broke up in 1970."
+            }
+        ];
+
+        function generateFact() {
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            document.getElementById('fact').innerText = randomFact.question;
+            document.getElementById('answer').innerText = '';
+        }
+
+        function showAnswer() {
+            const currentFact = facts.find(fact => fact.question === document.getElementById('fact').innerText);
+            if (currentFact) {
+                document.getElementById('answer').innerText = currentFact.answer;
+            }
+        }
+    </script>
+</body>
+</html>
